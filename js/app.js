@@ -11,7 +11,7 @@ var Enemy = function(x,y) {
     this.x = x;
     this.y = y;    
     this.speed= Math.floor(6 + (Math.random()*50));
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -33,16 +33,16 @@ Enemy.prototype.update = function(dt) {
         this.x=-100;
         
         //reset the y to a random street row
-        var yStartingPoints = [65, 150, 235]
+        var yStartingPoints = [65, 150, 235];
         this.y = yStartingPoints[Math.round(Math.random() * (yStartingPoints.length - 1))];
     }
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
 //    console.log("Enemy this.sprite= " + this.sprite);
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 //-------------------------- PLAYER -------------------------------
 
@@ -56,7 +56,7 @@ var Player = function(x,y){
 //Assign the starting x and y
     this.x=x;
     this.y=y;    
-}
+};
 
 Player.prototype.update = function() //pass dt as param?
 {
@@ -89,13 +89,13 @@ Player.prototype.update = function() //pass dt as param?
     }
     
 
-}
+};
 
 //render the player just like the enemies
 Player.prototype.render = function()
 {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 Player.prototype.handleInput = function(input)
 {
@@ -115,7 +115,7 @@ Player.prototype.handleInput = function(input)
     {
         if(this.x<400) //can't go off screen
             //go right 100
-            this.x=this.x+100
+            this.x=this.x+100;
     }
 
     //y axis: must be 85 to 400 (0 or less is water) // can be 0water 65road 150road 235road 320gras 405grass
@@ -128,15 +128,15 @@ Player.prototype.handleInput = function(input)
     {
         if(this.y<401) //can't go off screen
         {
-            this.y=this.y+85 // go down 85
+            this.y=this.y+85; // go down 85
         }
     }
 
  console.log('AFTER: x:'+this.x,'y:'+this.y);
-}
+};
 // ------------------------ END PLAYER --------------------------------
 
-//generate random speed between 50 and 100
+//generate random speed between 50 and 100 (I end up not using it after all)
 //Math.random -> 0 and 1
 //+ 1 -> between 1 and 2
 //*50 -> between 50 and 100
